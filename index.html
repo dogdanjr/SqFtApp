@@ -2,35 +2,55 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <!-- Ensures your page uses UTF-8 character encoding for universal text support -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Viewport meta tag to ensure the site is responsive on mobile devices -->
     <title>Measurement Converter</title>
-    <link rel="stylesheet" href="styles.css"> <!-- Link to the external CSS file -->
+    <link rel="stylesheet" href="styles.css">
+    <!-- Linking the external CSS file to style the page -->
 </head>
 <body>
-    <div class="card"> <!-- Card class for styling -->
+    <div class="card">
+        <!-- Div with class 'card' for styled container with CSS from styles.css -->
         <h2>Input measurements here:</h2>
-        <textarea id="measurements" placeholder="Enter measurements here..."></textarea><br>
+        <!-- Heading for the input section -->
+        <textarea id="measurements" placeholder="Enter measurements here..."></textarea>
+        <!-- Textarea for user to input measurements. Each measurement should be entered on a new line -->
+        <br> <!-- Line break for better spacing -->
         <button onclick="convertMeasurements()">Submit</button>
+        <!-- Button that triggers the conversion function when clicked -->
         <h2>Results:</h2>
+        <!-- Heading for the results section -->
         <ol id="results"></ol>
+        <!-- Ordered list where conversion results will be displayed -->
     </div>
 
     <script>
+        // JavaScript function to process and convert input measurements
         function convertMeasurements() {
             const input = document.getElementById('measurements').value;
+            // Retrieves value from the textarea
             const lines = input.split('\n');
+            // Splits the textarea input into lines at each newline character
             const resultsList = document.getElementById('results');
+            // Accesses the ordered list element where results will be displayed
             resultsList.innerHTML = '';
+            // Clears previous results from the list to prevent duplication
 
             lines.forEach((line) => {
                 const dimensions = line.split('x').map(dim => parseFloat(dim.trim()));
+                // Splits each line by 'x' and converts strings to floats, removing any spaces
                 if (dimensions.length === 2) {
-                    const width = dimensions[0];
-                    the height = dimensions[1];
+                    const width = dimensions[0]; // width in inches
+                    const height = dimensions[1]; // height in inches
                     const squareFeet = (width * 0.0833) * (height * 0.0833);
+                    // Converts dimensions from inches to square feet
                     const resultItem = document.createElement('li');
+                    // Creates a new list item for each result
                     resultItem.textContent = `${squareFeet.toFixed(3)} square feet`;
+                    // Sets the text of the list item to the calculated square feet, rounded to three decimal places
                     resultsList.appendChild(resultItem);
+                    // Appends the new list item to the results list
                 }
             });
         }
