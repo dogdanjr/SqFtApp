@@ -4,46 +4,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Measurement Converter</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Link to the external CSS file -->
 </head>
 <body>
-    <!-- Heading for Input Section -->
-    <h2>Input measurements here:</h2>
-    <!-- Textarea for users to input measurements, with specified rows and columns -->
-    <textarea id="measurements" rows="5" cols="20" placeholder="Enter measurements here..."></textarea><br>
-    <!-- Button that triggers the convertMeasurements function when clicked -->
-    <button onclick="convertMeasurements()">Submit</button>
-    <!-- Heading for Results Section -->
-    <h2>Results:</h2>
-    <!-- Ordered List where results will be displayed -->
-    <ol id="results"></ol>
+    <div class="card"> <!-- Card class for styling -->
+        <h2>Input measurements here:</h2>
+        <textarea id="measurements" placeholder="Enter measurements here..."></textarea><br>
+        <button onclick="convertMeasurements()">Submit</button>
+        <h2>Results:</h2>
+        <ol id="results"></ol>
+    </div>
 
     <script>
-        // Function that handles the conversion of measurements from inches to square feet
         function convertMeasurements() {
-            // Retrieve the value from the textarea
             const input = document.getElementById('measurements').value;
-            // Split the input into lines based on newlines
             const lines = input.split('\n');
-            // Get the results list HTML element
             const resultsList = document.getElementById('results');
-            // Clear any previous results from the list
             resultsList.innerHTML = '';
 
-            // Process each line individually
             lines.forEach((line) => {
-                // Split each line by 'x' to separate width and height, and trim any spaces
                 const dimensions = line.split('x').map(dim => parseFloat(dim.trim()));
-                // Ensure dimensions has two elements (width and height)
                 if (dimensions.length === 2) {
-                    const width = dimensions[0]; // width in inches
-                    const height = dimensions[1]; // height in inches
-                    // Convert dimensions from inches to feet and calculate square feet
+                    const width = dimensions[0];
+                    the height = dimensions[1];
                     const squareFeet = (width * 0.0833) * (height * 0.0833);
-                    // Create a new list item element for each result
                     const resultItem = document.createElement('li');
-                    // Set the text content of the list item to show the area in square feet
                     resultItem.textContent = `${squareFeet.toFixed(3)} square feet`;
-                    // Append the new result item to the results list
                     resultsList.appendChild(resultItem);
                 }
             });
