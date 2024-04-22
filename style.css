@@ -26,12 +26,6 @@ body {
     max-width: 400px; /* Max width of the card */
 }
 
-/* Reset margin and padding for the ol element inside .card */
-.card ol {
-    margin: 0;
-    padding: 0;
-}
-
 /* Style for the textarea to make it visually appealing */
 textarea {
     width: 100%; /* Takes full width of the parent */
@@ -58,4 +52,10 @@ button {
 /* Ensures the button has a nice hover effect */
 button:hover {
     background-color: #0056b3; /* Darker shade on hover */
+}
+
+/* Added style for results list */
+#results {
+    padding-left: 20px; /* Aligns text with the rest of the card content */
+    margin-top: 10px; /* Provides space between the button and results list */
 }
