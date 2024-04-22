@@ -26,6 +26,12 @@ body {
     max-width: 400px; /* Max width of the card */
 }
 
+/* Reset margin and padding for the ol element inside .card */
+.card ol {
+    margin: 0;
+    padding: 0;
+}
+
 /* Style for the textarea to make it visually appealing */
 textarea {
     width: 100%; /* Takes full width of the parent */
