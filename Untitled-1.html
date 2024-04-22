@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Measurement Converter</title>
+</head>
+<body>
+    <h2>Input measurements here:</h2>
+    <textarea id="measurements" rows="5" cols="20" placeholder="Enter measurements here..."></textarea><br>
+    <button onclick="convertMeasurements()">Submit</button>
+    <h2>Results:</h2>
+    <ul id="results"></ul>
+
+    <script>
+        function convertMeasurements() {
+            const input = document.getElementById('measurements').value;
+            const lines = input.split('\n');
+            const resultsList = document.getElementById('results');
+            resultsList.innerHTML = ''; // Clear previous results
+
+            lines.forEach((line, index) => {
+                const dimensions = line.split('x').map(dim => parseFloat(dim.trim()));
+                if (dimensions.length === 2) {
+                    const width = dimensions[0];
+                    const height = dimensions[1];
+                    // Convert inches to feet (1 inch = 0.0833 feet)
+                    const squareFeet = (width * 0.0833) * (height * 0.0833);
+                    const resultItem = document.createElement('li');
+                    resultItem.textContent = `${index + 1}. ${squareFeet.toFixed(3)} square feet`;
+                    resultsList.appendChild(resultItem);
+                }
+            });
+        }
+    </script>
+</body>
+</html>
