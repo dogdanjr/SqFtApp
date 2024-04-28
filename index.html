@@ -10,22 +10,24 @@
     <!-- Linking the external CSS file to style the page -->
 </head>
 <body>
+    <a href="vendors.html" style="display: block; margin-top: 10px; text-align: center;">
+        Our Vendors
+    </a>
+    <!-- Stand-alone link for navigation to 'vendors.html', styled to appear as a top banner -->
+    
     <div class="card">
-        <!-- Container div with a 'card' class for styling -->
+        <!-- Div with class 'card' for styled container with CSS from styles.css -->
         <h2>Input measurements here:</h2>
-        <!-- Heading for the measurement input section -->
+        <!-- Heading for the input section -->
         <textarea id="measurements" placeholder="Enter measurements here..."></textarea>
-        <!-- Textarea for users to enter measurements, with a placeholder text -->
-        <br>
-        <!-- Line break for spacing -->
+        <!-- Textarea for user to input measurements. Each measurement should be entered on a new line -->
+        <br> <!-- Line break for better spacing -->
         <button onclick="convertMeasurements()">Submit</button>
-        <!-- Button to submit the measurements, calls the 'convertMeasurements' JavaScript function -->
+        <!-- Button that triggers the conversion function when clicked -->
         <h2>Results:</h2>
-        <!-- Heading for displaying the results of the conversions -->
+        <!-- Heading for the results section -->
         <ol id="results"></ol>
-        <!-- Ordered list element where conversion results will be displayed -->
-        <a href="vendors.html">Our Vendors</a>
-        <!-- Link to navigate to the 'vendors.html' page. This element enhances navigation within the site. -->
+        <!-- Ordered list where conversion results will be displayed -->
     </div>
     <script>
         // JavaScript function to process and convert input measurements
