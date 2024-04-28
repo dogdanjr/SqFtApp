@@ -11,20 +11,22 @@
 </head>
 <body>
     <div class="card">
-        <!-- Div with class 'card' for styled container with CSS from styles.css -->
+        <!-- Container div with a 'card' class for styling -->
         <h2>Input measurements here:</h2>
-        <!-- Heading for the input section -->
+        <!-- Heading for the measurement input section -->
         <textarea id="measurements" placeholder="Enter measurements here..."></textarea>
-        <!-- Textarea for user to input measurements. Each measurement should be entered on a new line -->
-        <br> <!-- Line break for better spacing -->
+        <!-- Textarea for users to enter measurements, with a placeholder text -->
+        <br>
+        <!-- Line break for spacing -->
         <button onclick="convertMeasurements()">Submit</button>
-        <!-- Button that triggers the conversion function when clicked -->
+        <!-- Button to submit the measurements, calls the 'convertMeasurements' JavaScript function -->
         <h2>Results:</h2>
-        <!-- Heading for the results section -->
+        <!-- Heading for displaying the results of the conversions -->
         <ol id="results"></ol>
-        <!-- Ordered list where conversion results will be displayed -->
+        <!-- Ordered list element where conversion results will be displayed -->
+        <a href="vendors.html">Our Vendors</a>
+        <!-- Link to navigate to the 'vendors.html' page. This element enhances navigation within the site. -->
     </div>
-
     <script>
         // JavaScript function to process and convert input measurements
         function convertMeasurements() {
