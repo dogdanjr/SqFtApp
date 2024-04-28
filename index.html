@@ -11,57 +11,31 @@
 </head>
 <body>
     <!-- Navigation Bar -->
-    <nav>
-        <ul>
-            <li><a href="index.html" class="active">Home</a></li>
-            <li><a href="contacts.html">Vendors</a></li>
-        </ul>
-    </nav>
-
-    <div class="card">
-        <!-- Div with class 'card' for styled container with CSS from styles.css -->
-        <h2>Input measurements here:</h2>
-        <!-- Heading for the input section -->
-        <textarea id="measurements" placeholder="Enter measurements here..."></textarea>
-        <!-- Textarea for user to input measurements. Each measurement should be entered on a new line -->
-        <br> <!-- Line break for better spacing -->
-        <button onclick="convertMeasurements()">Submit</button>
-        <!-- Button that triggers the conversion function when clicked -->
-        <h2>Results:</h2>
-        <!-- Heading for the results section -->
-        <ol id="results"></ol>
-        <!-- Ordered list where conversion results will be displayed -->
+    <div class="nav-container">
+        <nav>
+            <ul>
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="contacts.html">Vendors</a></li>
+            </ul>
+        </nav>
+    </div>
+    <div class="main-content">
+        <div class="card">
+            <!-- Div with class 'card' for styled container with CSS from styles.css -->
+            <h2>Input measurements here:</h2>
+            <!-- Heading for the input section -->
+            <textarea id="measurements" placeholder="Enter measurements here..."></textarea>
+            <!-- Textarea for user to input measurements. Each measurement should be entered on a new line -->
+            <br> <!-- Line break for better spacing -->
+            <button onclick="convertMeasurements()">Submit</button>
+            <!-- Button that triggers the conversion function when clicked -->
+            <h2>Results:</h2>
+            <!-- Heading for the results section -->
+            <ol id="results"></ol>
+            <!-- Ordered list where conversion results will be displayed -->
+        </div>
     </div>
 
-    <script>
-        // JavaScript function to process and convert input measurements
-        function convertMeasurements() {
-            const input = document.getElementById('measurements').value;
-            // Retrieves value from the textarea
-            const lines = input.split('\n');
-            // Splits the textarea input into lines at each newline character
-            const resultsList = document.getElementById('results');
-            // Accesses the ordered list element where results will be displayed
-            resultsList.innerHTML = '';
-            // Clears previous results from the list to prevent duplication
-
-            lines.forEach((line) => {
-                const dimensions = line.split('x').map(dim => parseFloat(dim.trim()));
-                // Splits each line by 'x' and converts strings to floats, removing any spaces
-                if (dimensions.length === 2) {
-                    const width = dimensions[0]; // width in inches
-                    const height = dimensions[1]; // height in inches
-                    const squareFeet = (width * 0.0833) * (height * 0.0833);
-                    // Converts dimensions from inches to square feet
-                    const resultItem = document.createElement('li');
-                    // Creates a new list item for each result
-                    resultItem.textContent = `${squareFeet.toFixed(3)} square feet`;
-                    // Sets the text of the list item to the calculated square feet, rounded to three decimal places
-                    resultsList.appendChild(resultItem);
-                    // Appends the new list item to the results list
-                }
-            });
-        }
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
