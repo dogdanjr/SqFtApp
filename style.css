@@ -16,6 +16,20 @@ body {
     padding: 20px; /* Adds some padding around the content */
 }
 
+/* Navigation bar at the top */
+#top-nav {
+    width: 100%;
+    text-align: center; /* Centers the content */
+    margin-bottom: 20px; /* Space below the navbar */
+}
+
+/* Style for the navigation link */
+a {
+    text-decoration: none; /* Removes underline from links */
+    color: #007BFF; /* Bootstrap blue */
+    font-size: 16px; /* Sets the font size for the link */
+}
+
 /* Card-style container for the form */
 .card {
     background: white; /* White background for the card */
