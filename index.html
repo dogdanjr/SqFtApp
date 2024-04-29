@@ -1,61 +1,59 @@
-/* Basic reset to remove padding, margin, and set box-sizing to border-box for all elements */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- Ensures your page uses UTF-8 character encoding for universal text support -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Viewport meta tag to ensure the site is responsive on mobile devices -->
+    <title>Measurement Converter</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Linking the external CSS file to style the page -->
+</head>
+<body>
+    <div class="card">
+        <!-- Div with class 'card' for styled container with CSS from styles.css -->
+        <h2>Input measurements here:</h2>
+        <!-- Heading for the input section -->
+        <textarea id="measurements" placeholder="Enter measurements here..."></textarea>
+        <!-- Textarea for user to input measurements. Each measurement should be entered on a new line -->
+        <br> <!-- Line break for better spacing -->
+        <button onclick="convertMeasurements()">Submit</button>
+        <!-- Button that triggers the conversion function when clicked -->
+        <h2>Results:</h2>
+        <!-- Heading for the results section -->
+        <ol id="results"></ol>
+        <!-- Ordered list where conversion results will be displayed -->
+    </div>
 
-/* Main body styling to set a default font and background */
-body {
-    font-family: Arial, sans-serif; /* Sets a clean, readable font */
-    background-color: #f4f4f9; /* Light gray background for slight contrast */
-    display: flex; /* Enables flexbox layout which is perfect for centering items */
-    justify-content: center; /* Center horizontally */
-    align-items: center; /* Center vertically */
-    min-height: 100vh; /* Full viewport height */
-    padding: 20px; /* Adds some padding around the content */
-}
+    <script>
+        // JavaScript function to process and convert input measurements
+        function convertMeasurements() {
+            const input = document.getElementById('measurements').value;
+            // Retrieves value from the textarea
+            const lines = input.split('\n');
+            // Splits the textarea input into lines at each newline character
+            const resultsList = document.getElementById('results');
+            // Accesses the ordered list element where results will be displayed
+            resultsList.innerHTML = '';
+            // Clears previous results from the list to prevent duplication
 
-/* Card-style container for the form */
-.card {
-    background: white; /* White background for the card */
-    border-radius: 8px; /* Rounded corners */
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1); /* Subtle shadow for 3D effect */
-    padding: 20px; /* Padding inside the card */
-    width: 100%; /* Full width but will be constrained by max-width */
-    max-width: 400px; /* Max width of the card */
-}
-
-/* Style for the textarea to make it visually appealing */
-textarea {
-    width: 100%; /* Takes full width of the parent */
-    border: 1px solid #ccc; /* Light grey border */
-    border-radius: 4px; /* Slightly rounded corners for the textarea */
-    padding: 10px; /* Padding inside the textarea */
-    height: 100px; /* Set a fixed height */
-    resize: none; /* Disables resizing */
-}
-
-/* Style for the button to make it stand out */
-button {
-    background-color: #007BFF; /* Bootstrap blue */
-    color: white; /* Text color */
-    border: none; /* No border */
-    padding: 10px 20px; /* Padding around the text */
-    border-radius: 5px; /* Rounded corners */
-    cursor: pointer; /* Pointer cursor on hover */
-    display: block; /* Makes it a block element */
-    width: 100%; /* Full width */
-    margin-top: 10px; /* Margin on the top */
-}
-
-/* Ensures the button has a nice hover effect */
-button:hover {
-    background-color: #0056b3; /* Darker shade on hover */
-}
-
-/* Added style for results list */
-#results {
-    padding-left: 20px; /* Aligns text with the rest of the card content */
-    margin-top: 10px; /* Provides space between the button and results list */
-}
+            lines.forEach((line) => {
+                const dimensions = line.split('x').map(dim => parseFloat(dim.trim()));
+                // Splits each line by 'x' and converts strings to floats, removing any spaces
+                if (dimensions.length === 2) {
+                    const width = dimensions[0]; // width in inches
+                    const height = dimensions[1]; // height in inches
+                    const squareFeet = (width * 0.0833) * (height * 0.0833);
+                    // Converts dimensions from inches to square feet
+                    const resultItem = document.createElement('li');
+                    // Creates a new list item for each result
+                    resultItem.textContent = `${squareFeet.toFixed(3)} square feet`;
+                    // Sets the text of the list item to the calculated square feet, rounded to three decimal places
+                    resultsList.appendChild(resultItem);
+                    // Appends the new list item to the results list
+                }
+            });
+        }
+    </script>
+</body>
+</html>
